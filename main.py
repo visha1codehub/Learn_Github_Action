@@ -1,4 +1,3 @@
-a = "Vish Pylint"
+A = "Vish Pylint"
 
-
-print(a)
+print(A)
