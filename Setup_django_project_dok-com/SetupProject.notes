@@ -1,0 +1,36 @@
+Create a repository on github(with .gitignore and README.md).
+Clone this repository to local machine.
+Go to Dockerhub and Create an access token(name same as github repository) in security option and copy the access token.
+Go to github repository settings and Create two action secrets such as-
+        DOCKERHUB_USER  --  dockerhub_username
+        DOCKERHUB_TOKEN -- access token from dockerhub
+Go back to directory of project and create requiments.txt and enter the neccessary python packages that would be needed such as Django, djangorestframework, etc.
+Create a Dockerfile as provided.
+Create a .dockeringore file as provided.
+Create a app directory and check Dockerfile by {docker build .} command.
+Create a docker-compose.yml file as provided.(Keep checking it by {docker-compose build} command).
+LINTING WITH FLAKE8--
+    For linting.. Create a requiments.dev.txt file and type flake8 in it.
+    Create a .flake8 file in app directory and enter content as provided.
+    Check by {docker-compose run --rm app sh -c "flake8"}.
+    (for ignoring the unused import by flake8, add #noqa with 4 space in the line of import.)
+CREATING DJANGO PROJECT--
+    run {docker-compose run --rm app sh -c "django-admin startproject projectname ."}.
+    [it creates a django porject i.e. projectname inside app directory ]
+    We can check by running command {docker-compose up} to start the django project on 127.0.0.1:8000.
+CONFIGURATIONS FOR GITHUB ACTIONS--
+    Create a directory .github/workflows in main directory.
+    Create a file with .yml extension in the above created directory.
+    Fill this yml file as provided.
+CONFIGURATIONS FOR DATABASE--
+    Conifgure the database in docker-compose as provided.
+    Set enviroment variables in django's project settings.py database configuration.
+    Change Dockerfile and requirements.txt file to isntall neccessary depedencies for database configuration.
+Create a "core" app by {docker-compose run --rm app sh -c "python manage.py startapp core"}.
+For fixing the race condition in database implement some commands like "wait_for_db.py" and tests for it.
+For creating such commands, create a directory named "management"(inside core app) and inner content as provided.
+For creating tests for it, create a directory named "tests"(inside core app) and inner content as provived.
+We can run that "wait_for_db" command by {docker-compose run --rm app sh -c "python manage.py wait_for_db"}
+
+
+YEAH! STARTING SETUP IS COMPLETED...CONTINUE TO BUILD YOUR PROJECT.
