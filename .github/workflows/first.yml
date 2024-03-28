@@ -1,0 +1,16 @@
+---
+name: Checks
+
+on: [push]
+
+jobs:
+  PyLint:
+    name: Linting
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Downloads dependencies
+        run: pip install pylint
+      - name: Lint
+        run: pylint main.py
